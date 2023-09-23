@@ -1,25 +1,18 @@
-export default function Dropdown({
-  options,
-  isOpen,
-  showOptionIcon,
-  showOptionBadge,
-}) {
+export default function UserForm() {
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const values = Object.fromEntries(formData);
+
+    console.log(values);
+  };
+
   return (
-    <div className="dropdown">
-      <div>{value}</div>
-      {isOpen && (
-        <div className="options">
-          {options.map((option) => {
-            return (
-              <div className="option">
-                {showOptionIcon && <img src={option.icon} />}
-                <span>{option.title}</span>
-                {showOptionBadge && <img src={option.icon} />}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
+    <form onSubmit={onSubmit}>
+      <input id="email" type="email" name="email" required />
+      <input id="password" type="password" name="password" required />
+      <input id="submit" value="submit" />
+    </form>
   );
 }
