@@ -1,1 +1,1 @@
-## this method of classname design makes the code more understandable to other people
+## easy to follow and scale
