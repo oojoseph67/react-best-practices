@@ -1,15 +1,16 @@
-const Button = ({ primary, outline, isDisabled }) => {
-  let classNames = styles.base;
+"use client";
 
-  if (primary) {
-    classNames += "" + styles.primary;
-  }
-  if (outline) {
-    classNames += "" + styles.outline;
-  }
-  if (isDisabled) {
-    classNames += "" + styles.isDisabled;
-  }
+import React from "react";
+import ServerComponent from "../rightCode"; // ../ServerComponent
 
-  return <button className={classNames}></button>;
+const ClientComponent = () => {
+  const [search, setSearch] = React.useState("");
+
+  return (
+    <div>
+      <ServerComponent />
+    </div>
+  );
 };
+
+export default ClientComponent;
