@@ -1,1 +1,2 @@
-## for the array methods we want to use it needs to be abstracted
+## the use of the same data on multiple pages can some times 
+## break the app so it wise to use them globally
