@@ -1,12 +1,14 @@
-const Table = () => {
-  // Some Code...
+function UserForm() {
+  const [items, setItems] = React.useState([]);
+  const [selectedItem, setSelectedItem] = React.useState(null);
 
-  // More Code...
+  const onItemClick = (item) => setSelectedItem(item);
 
-  const renderRow = () => {
-    //...
-    const ROW_HEIGHT = 20;
-    //..
-    row.height = ROW_HEIGHT;
-  };
-};
+  return (
+    <ul>
+      {items.map((item) => {
+        return <li onClick={onItemClick(item)}></li>;
+      })}
+    </ul>
+  );
+}

@@ -1,11 +1,16 @@
-const ROW_HEIGHT = 20;
-const Table = () => {
-  // Some Code...
+function UserForm() {
+  const [items, setItems] = React.useState([]);
+  const [selectedItem, setSelectedItem] = React.useState(null);
 
-  // More Code...
-
-  const renderRow = () => {
-    //...
-    row.height = ROW_HEIGHT;
+  const onItemClick = (item) => {
+    setSelectedItem(item);
   };
-};
+
+  return (
+    <ul>
+      {items.map((item) => {
+        return <li onClick={() => onItemClick(item)}></li>;
+      })}
+    </ul>
+  );
+}
