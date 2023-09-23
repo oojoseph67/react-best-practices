@@ -1,13 +1,6 @@
-const TodoList = () => {
-  const [todos, { add, remove }] = useArrayState([]);
+import useUserData from "./react-query";
 
-  const addTodo = () => {
-    add({ name: "Some new todo" });
-  };
-
-  const removeTodo = (index) => {
-    remove(index);
-  };
-
-  return <ul>{/** some todos */}</ul>;
-};
+function Heading() {
+  const { data: user } = useUserData();
+  return <UserInfo user={user} />;
+}

@@ -1,19 +1,24 @@
-import { useState } from "react";
+function App({ user }) {
+  return (
+    <main>
+      <Sidebar user={user} />
+      <Dashboard user={user} />
+    </main>
+  );
+}
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+function Sidebar({ user }) {
+  return (
+      <aside>
+          <Heading user={user} />
+    </aside>
+  );
+}
 
-  const add = (newValue) => {
-    setTodos((currentState) => [...currentState, newValue]);
-  };
-
-  const remove = (index) => {
-    setTodos((currentState) => {
-      const newState = [...currentState];
-      newState.splice(index, 1);
-      return newState;
-    });
-  };
-
-  return <ul> {/** some todos */} </ul>;
-};
+function Heading({ user }) {
+  return (
+    <main>
+      <UserInfo user={user} />
+    </main>
+  );
+}
