@@ -1,2 +1,1 @@
-## this way of import make things readable
-##  the second style of import reduces error
+## for the array methods we want to use it needs to be abstracted

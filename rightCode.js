@@ -1,6 +1,13 @@
-import Navbar from '../../../components/NavBar'
-// import Navbar from '@/components/Navbar'
+const TodoList = () => {
+  const [todos, { add, remove }] = useArrayState([]);
 
-function SomeComponent() {
-    return <Navbar />
-}
+  const addTodo = () => {
+    add({ name: "Some new todo" });
+  };
+
+  const removeTodo = (index) => {
+    remove(index);
+  };
+
+  return <ul>{/** some todos */}</ul>;
+};
