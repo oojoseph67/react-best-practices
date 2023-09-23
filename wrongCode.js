@@ -1,16 +1,25 @@
-function UserForm() {
-  const [items, setItems] = React.useState([]);
-  const [selectedItem, setSelectedItem] = React.useState(null);
-
-  const onItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
+export default function Dropdown({
+  options,
+  isOpen,
+  showOptionIcon,
+  showOptionBadge,
+}) {
   return (
-    <ul>
-      {items.map((item) => {
-        return <li onClick={() => onItemClick(item)}></li>;
-      })}
-    </ul>
+    <div className="dropdown">
+      <div>{value}</div>
+      {isOpen && (
+        <div className="options">
+          {options.map((option) => {
+            return (
+              <div className="option">
+                {showOptionIcon && <img src={option.icon} />}
+                <span>{option.title}</span>
+                {showOptionBadge && <img src={option.icon} />}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
