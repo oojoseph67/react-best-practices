@@ -1,31 +1,15 @@
-const App = () => {
+export default function App() {
   return (
-    <Modal>
-      <Modal.CancelAction>
-        <a className="whatever-style i-want" href="/open/some/url">
-          Cancel
-        </a>
-      </Modal.CancelAction>
-      <Modal.SaveAction>
-        <button>Save</button>
-      </Modal.SaveAction>
-    </Modal>
+    <Dropdown>
+      <Dropdown.Button>Solutions</Dropdown.Button>
+      <Dropdown.List>
+        <Dropdown.Item>Item 1</Dropdown.Item>
+        <Dropdown.Item>Item 2</Dropdown.Item>
+      </Dropdown.List>
+      <Dropdown.Footer>
+        <h2>Documentations</h2>
+        <p>Start Integrating Product and Tools</p>
+      </Dropdown.Footer>
+    </Dropdown>
   );
-};
-
-const Modal = ({ children }) => {
-  return React.Children.map(children, (child) => {
-    return React.cloneElement(child);
-  });
-};
-
-const CancelAction = ({ children }) => {
-  return children;
-};
-
-const SaveAction = ({ children }) => {
-  return children;
-};
-
-Modal.CancelAction = CancelAction;
-Modal.SaveAction = SaveAction;
+}

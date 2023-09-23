@@ -1,23 +1,32 @@
-const App = () => {
-  return (
-    <Modal cancelText="Exit" saveText="Accept changes">
-      I'm a modal
-    </Modal>
-  );
-};
+export default function App() {
+  <Dropdown
+    items={["Item 1", "Item 2"]}
+    text="Solutions"
+    footerHeading="Documentations"
+    footerDesc="Start Integrating Product and Tools"
+    showIcons
+    hasFooter
+  />;
+}
 
-const Modal = ({
-  children,
-  cancelText,
-  saveText,
-  cancelClasses,
-  saveClasses,
-}) => {
+function Dropdown({ text, hasFooter, footerHeading, footerDesc, items }) {
   return (
-    <aside>
-      {children}
-      <button className={cancelClasses}>{cancelText}</button>
-      <button className={saveClasses}>{saveText}</button>
-    </aside>
+    <>
+      <button>{text}</button>
+      <ul>
+        {items.map((item) => {
+          <li>
+            {showIcon && <SomeIcon />} {item}
+          </li>;
+        })}
+      </ul>
+
+      {hasFooter && (
+        <div>
+          <h2>{footerHeading}</h2>
+          <h2>{footerDesc}</h2>
+        </div>
+      )}
+    </>
   );
-};
+}
