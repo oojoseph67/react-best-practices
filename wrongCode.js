@@ -1,16 +1,23 @@
-"use client";
-
-import React from "react";
-import ServerComponent from "../rightCode"; // ../ServerComponent
-
-const ClientComponent = () => {
-  const [search, setSearch] = React.useState("");
-
+const App = () => {
   return (
-    <div>
-      <ServerComponent />
-    </div>
+    <Modal cancelText="Exit" saveText="Accept changes">
+      I'm a modal
+    </Modal>
   );
 };
 
-export default ClientComponent;
+const Modal = ({
+  children,
+  cancelText,
+  saveText,
+  cancelClasses,
+  saveClasses,
+}) => {
+  return (
+    <aside>
+      {children}
+      <button className={cancelClasses}>{cancelText}</button>
+      <button className={saveClasses}>{saveText}</button>
+    </aside>
+  );
+};
