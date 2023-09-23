@@ -1,13 +1,11 @@
-const UserView = ({ role }) => {
+export default function GoalLegend({ goal }) {
   return (
-    <div>
-      {role === "Admin" ? (
-        <AdminView />
-      ) : role === "Guest" ? (
-        <GuestView />
-      ) : (
-        <ContributorView />
-      )}
-    </div>
+    <>
+      {goal < 30
+        ? "There is still some work to do"
+        : goal >= 30 && goal < 60
+        ? "Tou are almost there!"
+        : "You reached your goal"}
+    </>
   );
-};
+}
