@@ -1,11 +1,13 @@
-const { useEffect } = require("react");
+const { useState, useEffect } = require("react");
 
-function PostPage() {
-  const [post, setPost] = useState();
+function Settings() {
+  const [user, setUser] = useState({});
+
+  const onPageView = useEffectEvent((currentPath) => {
+    trackAnalytics("Page View", currentPath, user.name);
+  });
 
   useEffect(() => {
-    fetchPost().then((post) => setPost(post));
-  }, []);
-
-  const currViews = getViewsByPost(post);
+    onPageView(route.url);
+  }, [route.path]);
 }
