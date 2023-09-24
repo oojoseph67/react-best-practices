@@ -1,4 +1,9 @@
-const reducer = (current, update) => ({ ...current, ...update });
+const reducer = (current, update) => {
+  if (update.age > 18) {
+    return { ...current, ...update };
+  }
+  return initState;
+};
 
 function UserForm() {
   const [user, setUser] = React.useReducer(reducer);
