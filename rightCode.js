@@ -1,13 +1,18 @@
-const { useState, useEffect } = require("react");
+import { useEffect } from "react";
+import { useQuery } from "@/tanstack/react-query";
 
-function Settings() {
-  const [user, setUser] = useState({});
-
-  const onPageView = useEffectEvent((currentPath) => {
-    trackAnalytics("Page View", currentPath, user.name);
+function App() {
+  const [isLoading, error, data] = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      fetch("https://dog.ceo/image/random").then((res) => res.json()),
   });
 
-  useEffect(() => {
-    onPageView(route.url);
-  }, [route.path]);
+  if (isLoading) return <Spinner />;
+
+  if (error) return "An error has occurred: " + error.message;
+
+  return <div className="App">{dogImage && <img src={dogImage}></img>}</div>;
 }
+
+export default App;
