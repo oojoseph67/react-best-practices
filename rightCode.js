@@ -1,60 +1,12 @@
-/**
- * V1
- */
+import React from "react";
 
-const canUserPlaceOrder = (payment, product) => {
-  if (product.hasStock === true) {
-    if (payment.processed === true) {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-};
+import { Inter } from "next/font/google";
+import Head from "next/head";
+import Image from "next/image";
 
-/**
- * V2
- */
+import Button from "@/button";
 
-const canUserPlaceOrderV2 = (payment, product) => {
-  if (product.hasStock === false) {
-    return false;
-  } else if (payment.processed === true) {
-    return true;
-  }
-};
+import styles from ",/styles/globals.css";
 
-/**
- * V3
- */
 
-const canUserPlaceOrderV3 = (payment, product) => {
-  if (product.hasStock === true && payment.processed === true) {
-    return true;
-  }
-  return false;
-};
-
-/**
- * V4
- */
-
-const canUserPlaceOrderV4 = (payment, product) => {
-  return product.hasStock && payment.processed;
-};
-
-/**
- * V5
- */
-
-const canUserPlaceOrderV5 = (payment, product) =>
-  product.hasStock && payment.processed;
-
-/**
- * V6
- */
-
-const canUserPlaceOrderV6 = ({ processed }, { hasStock }) =>
-  hasStock && processed;
+/// npm i eslint-plugin-import

@@ -1,13 +1,6 @@
-const canUserPlaceOrder = (payment, product) => {
-  let canUserPlaceOrder = false;
-  if (product.hasStock === true) {
-    if (payment.processed === true) {
-      canPlaceOrder = true;
-    } else {
-      canPlaceOrder = false;
-    }
-  } else {
-    canPlaceOrder = false;
-  }
-  return canPlaceOrder;
-};
+import Button from '@/button'
+import { Inter } from 'next/font/google'
+import Head from 'next/head'
+import React from 'react'
+import Image from "next/image";
+import styles from ",/styles/globals.css";
