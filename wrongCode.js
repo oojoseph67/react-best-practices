@@ -1,13 +1,15 @@
-const { useState, useEffect } = require("react");
+const { useEffect } = require("react");
 
-const Checkout = () => {
-  const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
+function PostPage() {
+  const [post, setPost] = useState();
+  const [views, setViews] = useState();
 
   useEffect(() => {
-    const newTotal = items.reduce((acc, currValue) => {
-      return acc + currValue.price;
-    }, 0);
-    setTotal(newTotal);
-  }, [items]);
-};
+    fetchPost().then((post) => setPost(post));
+  }, []);
+
+  useEffect(() => {
+    const currViews = getViewsByPost(post);
+    setViews(currViews);
+  }, [post]);
+}

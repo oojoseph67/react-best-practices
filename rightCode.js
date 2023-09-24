@@ -1,8 +1,11 @@
-const { useState, useEffect } = require("react");
+const { useEffect } = require("react");
 
-const Checkout = () => {
-  const [items, setItems] = useState([]);
-  const newTotal = items.reduce((acc, currValue) => {
-    return acc + currValue.price;
-  }, 0);
-};
+function PostPage() {
+  const [post, setPost] = useState();
+
+  useEffect(() => {
+    fetchPost().then((post) => setPost(post));
+  }, []);
+
+  const currViews = getViewsByPost(post);
+}
