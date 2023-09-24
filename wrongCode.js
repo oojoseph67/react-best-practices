@@ -1,12 +1,5 @@
-function App() {
-  const [height, setHeight] = React.useState(0);
-  const elementRef = React.useRef(null);
+const list = [...] // 10k items here
 
-  React.useEffect(() => {
-    if (elementRef.current) {
-      setHeight(elementRef.current.offsetHeight);
-    }
-  }, [elementRef, current]);
-
-  return <div ref={elementRef}></div>;
+const ExpensiveList = () => {
+    return list.map(el => <User user={el} />)
 }

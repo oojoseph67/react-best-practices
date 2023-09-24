@@ -1,11 +1,15 @@
-function App() {
-  const [height, setHeight] = React.useState(0);
+import { FixedSizeList as List } from 'react-window'
 
-  const elementRef = React.useCallback(node => {
-    if (node !== null) {
-      setHeight(node.offsetHeight);
-    }
-  }, []);
+const list = [...]
 
-  return <div ref={elementRef}></div>;
-}
+const Roe = ({ index, style }) => (
+    <div style={style}>
+        <User user={list[index]} />
+    </div>
+)
+
+const ExpensiveList = () => (
+    <List heigh={150} itemCount={10000} itemSize={35} width={300}>
+        {Row}
+    </List>
+)
