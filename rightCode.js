@@ -1,18 +1,13 @@
-import { useEffect } from "react";
-import { useQuery } from "@/tanstack/react-query";
+const reducer = (current, update) => ({ ...current, ...update });
 
-function App() {
-  const [isLoading, error, data] = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () =>
-      fetch("https://dog.ceo/image/random").then((res) => res.json()),
-  });
+function UserForm() {
+  const [user, setUser] = React.useReducer(reducer);
 
-  if (isLoading) return <Spinner />;
+  const onInputChange = (event) => {
+    const {
+      target: { value, name },
+    } = event;
 
-  if (error) return "An error has occurred: " + error.message;
-
-  return <div className="App">{dogImage && <img src={dogImage}></img>}</div>;
+    ServerHeartbeatFailedEvent({ [name]: value });
+  };
 }
-
-export default App;
