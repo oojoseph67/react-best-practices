@@ -1,12 +1,15 @@
-import React from "react";
+const App = () => {
+  const users = {
+    ids: ["1", "2", "3"],
+    entities: {
+      1: { id: 1, name: "george" },
+      2: { id: 2, name: "susan" },
+      3: { id: 3, name: "bob" },
+    },
+  };
+  const findUserById = (id) => {
+    return users.find((user) => user.id === id);
+  };
 
-import { Inter } from "next/font/google";
-import Head from "next/head";
-import Image from "next/image";
-
-import Button from "@/button";
-
-import styles from ",/styles/globals.css";
-
-
-/// npm i eslint-plugin-import
+  return <UsersList users={users} />;
+};

@@ -1,6 +1,13 @@
-import Button from '@/button'
-import { Inter } from 'next/font/google'
-import Head from 'next/head'
-import React from 'react'
-import Image from "next/image";
-import styles from ",/styles/globals.css";
+const App = () => {
+  const users = [
+    { id: 1, name: "george" },
+    { id: 2, name: "susan" },
+    { id: 3, name: "bob" },
+  ];
+
+  const findUserById = (id) => {
+    return users.find((user) => user.id === id);
+  };
+
+  return <UsersList users={users} />;
+};
