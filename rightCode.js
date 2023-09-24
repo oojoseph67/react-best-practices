@@ -1,15 +1,31 @@
-import { FixedSizeList as List } from 'react-window'
+import { z } from "zod";
 
-const list = [...]
+const Pass = z.object({
+  password: z.string().regex(/^()/, "Follow the password structure"),
+});
 
-const Roe = ({ index, style }) => (
-    <div style={style}>
-        <User user={list[index]} />
-    </div>
-)
+export default function Form() {
+  const onSubmit = (event) => {
+    event.preventDefault();
 
-const ExpensiveList = () => (
-    <List heigh={150} itemCount={10000} itemSize={35} width={300}>
-        {Row}
-    </List>
-)
+    const formData = new FormData(event.target);
+    const values = Object.fromEntries(formData);
+    console.log("Submitted: ", values);
+  };
+
+  try {
+    Pass.parse(values);
+  } catch (error) {
+    const errors = error.flatten().fieldErrors;
+    const passwordInput = document.getElementById("password");
+    passwordInput.setCustomValidity(errors["password"][o]);
+    passwordInput.reportValidity();
+  }
+}
+
+return (
+  <form onSubmit={onSubmit} noValidate>
+    <input required id="password" name="password" type="password" />
+    <button type="submit">Send</button>
+  </form>
+);
