@@ -1,37 +1,60 @@
-import { z } from "zod";
+/**
+ * V1
+ */
 
-const User = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
-
-export default function UserForm() {
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const values = Object.fromEntries(formData);
-
-    try {
-      User.parse(values);
-    } catch (err) {
-      if (err instanceof z.ZodError) {
-        const errors = err.flatten.fieldErrors;
-
-        if (errors["email"]) {
-          const emailInput = document.getElementById("email");
-          emailInput.setCustomValidity(errors["email"][0]);
-          emailInput.reportValidity();
-        }
-      }
+const canUserPlaceOrder = (payment, product) => {
+  if (product.hasStock === true) {
+    if (payment.processed === true) {
+      return true;
+    } else {
+      return false;
     }
-  };
+  } else {
+    return false;
+  }
+};
 
-  return (
-    <form noValidate onSubmit={onSubmit}>
-      <input id="email" type="email" name="email" required />
-      <input id="password" type="password" name="password" required />
-      <input id="submit" value="submit" />
-    </form>
-  );
-}
+/**
+ * V2
+ */
+
+const canUserPlaceOrderV2 = (payment, product) => {
+  if (product.hasStock === false) {
+    return false;
+  } else if (payment.processed === true) {
+    return true;
+  }
+};
+
+/**
+ * V3
+ */
+
+const canUserPlaceOrderV3 = (payment, product) => {
+  if (product.hasStock === true && payment.processed === true) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * V4
+ */
+
+const canUserPlaceOrderV4 = (payment, product) => {
+  return product.hasStock && payment.processed;
+};
+
+/**
+ * V5
+ */
+
+const canUserPlaceOrderV5 = (payment, product) =>
+  product.hasStock && payment.processed;
+
+/**
+ * V6
+ */
+
+const canUserPlaceOrderV6 = ({ processed }, { hasStock }) =>
+  hasStock && processed;
