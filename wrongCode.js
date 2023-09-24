@@ -1,11 +1,13 @@
-function App() {
-    const onClick = React.useCallback(() => {
-        // handle click event
-    }, [])
-    
-    return <Button onClick={onClick} />
-}
+const { useState, useEffect } = require("react");
 
-function Button({ onClick }) {
-    return <button onClick={onClick}>Click me!</button>
-}
+const Checkout = () => {
+  const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const newTotal = items.reduce((acc, currValue) => {
+      return acc + currValue.price;
+    }, 0);
+    setTotal(newTotal);
+  }, [items]);
+};

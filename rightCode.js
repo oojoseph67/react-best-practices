@@ -1,11 +1,8 @@
-function App() {
-  const onClick = React.useCallback(() => {
-    // handle click event
-  }, []);
+const { useState, useEffect } = require("react");
 
-  return <MyExpensiveComponent onClick={onClick} />;
-}
-
-const MyExpensiveComponent = React.memo({ onClick }) {
-  /** */
-}
+const Checkout = () => {
+  const [items, setItems] = useState([]);
+  const newTotal = items.reduce((acc, currValue) => {
+    return acc + currValue.price;
+  }, 0);
+};
