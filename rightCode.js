@@ -1,28 +1,36 @@
-import { useEffect, useState } from "react";
+import {
+  useQueryParams,
+  QueryParamsProvider,
+  StringParam,
+} from "use-query-params";
+import { ReactRoute6Adapter } from "use-query-params/adapters/react-router-6";
 
-const useItem = ({ itemId }) => {
-  const [item, setItem] = useState();
-  useEffect(() => {
-    const fetchItem = async () => {
-      //   const res = await fetch(`https://api/dh/${itemId}`);
-      const res = await itemsApi.getItemById(itemId);
-      setItem(res.json());
-    };
-    fetchItem();
-  }, []);
+function App() {
+  const [searchParam, setSearchPara] = useQueryParams({ search: StringParam });
+  const [searchVal, setSearchVal] = React.useState(searchParam?.search);
 
-  return { item };
-};
+  React.useEffect(() => {
+    if (searchVal) {
+      setSearchPara({ search: searchVal }, "push");
+    }
+  }, [searchVal.setSearchParam]);
 
-const parseItem = (item) => {
-  return {
-    name: item.name,
-    finalPrice: item.discountPrice || item.price,
-  };
-};
+  return (
+    <input
+      value={searchVal}
+      onChange={(e) => {
+        setSearchVal(e.target.value);
+      }}
+    />
+  );
+}
 
-const getItemById = async (id) => {
-  const res = await fetch(`https://api/dh/${itemId}`);
-  const item = parseItem(res.json());
-  return item;
-};
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <QueryParamsProvider adapter={ReactRoute6Adapter}>
+        <App />
+      </QueryParamsProvider>
+    </BrowserRouter>
+  );
+}
