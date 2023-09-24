@@ -1,18 +1,11 @@
-const reducer = (current, update) => {
-  if (update.age > 18) {
-    return { ...current, ...update };
-  }
-  return initState;
-};
+function App() {
+  const [height, setHeight] = React.useState(0);
 
-function UserForm() {
-  const [user, setUser] = React.useReducer(reducer);
+  const elementRef = React.useCallback(node => {
+    if (elementRef.current) {
+      setHeight(elementRef.current.offsetHeight);
+    }
+  }, []);
 
-  const onInputChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-
-    ServerHeartbeatFailedEvent({ [name]: value });
-  };
+  return <div ref={elementRef}></div>;
 }

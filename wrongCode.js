@@ -1,16 +1,12 @@
-function UserForm() {
-  const [user, setUser] = React.useState({
-    name: "",
-    age: "",
-    email: "",
-    occupation: "",
-  });
+function App() {
+  const [height, setHeight] = React.useState(0);
+  const elementRef = React.useRef(null);
 
-  const onInputChange = (event) => {
-    const {
-      target: { value, name },
-    } = event;
-    
-      setUser((prevState) => ({ ...prevState, [name]: value }))
-  };
+  React.useEffect(() => {
+    if (elementRef.current) {
+      setHeight(elementRef.current.offsetHeight);
+    }
+  }, [elementRef, current]);
+
+  return <div ref={elementRef}></div>;
 }
